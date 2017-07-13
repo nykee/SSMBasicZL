@@ -1,0 +1,19 @@
+#pagination{
+    float: right;
+}
+#deleteAll{
+    float: left;
+}
+#toolBar{
+    overflow: hidden;
+}
+.bar {
+    height: 18px;
+    background: #337ab7;
+}
+.el-upload__input{
+    display: none !important;
+}
+#funcZone,#left-nav{
+    height: 800px;
+}

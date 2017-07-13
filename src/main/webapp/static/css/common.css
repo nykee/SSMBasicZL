@@ -1,0 +1,79 @@
+body, button, select, textarea, input, label, option, fieldset, legend{font-family: 微软雅黑E\8F6F\96C5\9ED1,Tahoma,Verdana;font-size: 12px;line-height: 18px;color: #444;}
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, fieldset, legend, input, textarea, button, p, blockquote, th, td{margin: 0;padding: 0;}
+textarea{resize: none}
+.clear{height:1px;overflow:hidden;clear:both;}
+a,img{border:0;}
+img{vertical-align: middle}
+a{color: #000 !important;text-decoration: none !important;}
+a:hover{
+    text-decoration: none !important;
+}
+li{list-style-type:none;}
+.fl{float:left;}
+.fr{float:right;}
+.nf{clear:both;}
+.hid{overflow:hidden;}
+.clearfix{*zoom:1}
+.clearfix:after{display:block;visibility:hidden;clear:both;height:0;content:'.';font-size:0}
+.bottomshadow{border-bottom: solid 1px #B3B3B3;-webkit-box-shadow: 0 1px 1px 0 #DFDFDF;box-shadow: 0 1px 1px 0 #DFDFDF;}
+
+
+/*头部渐变导航通用css*/
+.navbar{
+    background:linear-gradient(to right top,#027ACE,#1A89B4,#88C355);
+    background: -webkit-linear-gradient(to right top,#027ACE,#1A89B4,#88C355);
+    /*position: fixed;*/
+    /*top:10px;*/
+    border-bottom:1px solid #45484B;
+    /*background: -webkit-linear-gradient(to right top,#027ACE,#1A89B4,#88C355);*/
+}
+
+.navbar-default .navbar-nav>li>a{
+    color:#000 !important;
+}
+.navbar-default .navbar-nav>li>a:hover{
+    color:#fff !important;
+    background:#00C1DE !important;
+}
+/*.curPage{
+    color:#fff !important;
+    background:#00C1DE !important;
+}*/
+
+/*页面尾部通用样式*/
+footer{
+    width:100%;
+    background:#027bbb;
+    /*margin-top:20px;*/
+    padding-bottom:30px;
+    float: left;
+    color:#A0DEFF;
+}
+.LogoAndCR{
+    border-top:1px dotted #4B5054;
+    padding-top:10px;
+}
+.bottomNav_title{
+    font-size: 16px;
+    color: #7DDEFF;
+    /*border-bottom: 1px solid #88C1DF;*/
+}
+.bottomNav{
+    padding-top:10px;
+}
+.bottomNav li{
+    margin-top:5px;
+}
+.bottomNav li a:hover{
+    color:#fff !important;
+}
+.bottomNav li a{color:#A0DEFF !important}
+
+
+/*重置boot-nav导航样式*/
+.navbar-default{
+   border:none !important;
+}
+.navbar{
+    border-radius: 0 !important;
+}

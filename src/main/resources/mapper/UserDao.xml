@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="biz.inno.dao.UserDao">
+    <!-- 目的：为DAO接口方法提供sql语句配置 -->
+    <!-- 查询用户和密码进行登录 -->
+    <select id="findByUsername" resultType="User" parameterType="String">
+
+        select * from T_Users where username = #{username}
+
+    </select>
+
+    <insert id="registerByUsernameAndPassword" parameterType="String" >
+
+       INSERT INTO T_Users (username,password) VALUES (#{username},#{password})
+
+    </insert>
+
+</mapper>

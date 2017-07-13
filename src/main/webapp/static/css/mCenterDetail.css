@@ -1,0 +1,23 @@
+.breadcrumb>.active a{
+    color:#00C1DE !important;
+}
+.dataZone{
+    margin-top:20px;
+    /*padding-left:20px;*/
+}
+.desc-title{
+    margin-bottom:20px;
+}
+.desc-title>img{
+    width: 100px;
+    height: 100px;
+    margin-left:10px;
+}
+.desc-title>span{
+    margin-left:10px;
+    font-size: 20px;
+    font-weight:bold;
+}
+.dataZone-content{
+    margin-top:15px;
+}

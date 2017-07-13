@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>逸动云--管理界面</title>
+    <meta name=”renderer” content=”webkit|ie-comp|ie-stand” />
+    <meta http-equiv="X-UA-Compatible" content="IE=8">
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../plugins/bootstrap-3.3.7-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/controlCenter.css">
+    <script src="../plugins/vue.js"></script>
+
+</head>
+<body>
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#"><img class="img-responsive center-block" src="../images/inno1.png" style="height: 50px" alt=""></a>
+        </div>
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li ><a href="../../index.jsp">首页 <span class="sr-only">(current)</span></a></li>
+                <li><a href="./mCenter.html">多中心展示</a></li>
+                <li><a href="./controlCenter.html">管理中心</a></li>
+
+            </ul>
+
+            <ul class="nav navbar-nav navbar-right" id="nav-right">
+                <li><a href="./loginAndReg.html"><span class="glyphicon glyphicon-log-in"></span>登录</a></li>
+                <li><a href="./loginAndReg.html?action=reg" id="regBtn"><span class="glyphicon glyphicon-user"></span>注册</a></li>
+
+            </ul>
+        </div>
+    </div>
+</nav>
+    <div id="main-content">
+
+        <div class="row">
+            <!--左侧导航条-->
+            <div id="left-nav" class="col-lg-3">
+                <el-menu default-active="2" class="el-menu-vertical-demo" @open="handleOpen" @close="handleClose">
+
+                    <el-menu-item index="1" @click="changeActive1"><i class="el-icon-menu" ></i>病例数据管理</el-menu-item>
+                    <el-menu-item index="2" @click="changeActive2"><i class="el-icon-menu" ></i>病例数据上传</el-menu-item>
+                    <el-menu-item index="3" @click="changeActive3"><i class="el-icon-setting" ></i>图表分析</el-menu-item>
+                </el-menu>
+            </div>
+            <!--右侧功能区-->
+            <div id="funcZone" class="col-lg-9">
+                <!--位置导航-->
+                <div id="locationNav"></div>
+                <!--数据管理区-->
+                <div id="viewAndAdmin" v-if="show_manage" >
+                    <h3>数据管理</h3>
+                    <!--搜索条-->
+                    <div id="searchBar">
+                        <input type="text" placeholder="输入查找的内容">
+                        <input type="submit" value="查询" class="btn btn-info">
+                        <input type="submit" value="新增" class="btn btn-info">
+                    </div>
+
+                    <!--表体-->
+                    <div id="dataTable-body">
+                        <table class="table">
+                            <thead>
+                            <tr >
+                                <td><input type="checkbox" v-on:click="selectAll()"></td>
+                                <td v-for="thead in theads">{{thead.colName}}</td>
+
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr v-for="(p,index) in persons">
+                                <td><input  type="checkbox" v-model="p.chked" ></td>
+                                <!--<td>{{p.chked}}</td>-->
+                                <td>{{index+1}}</td>
+                                <td>{{p.name}}</td>
+                                <td>{{p.age}}</td>
+                                <td>{{p.gender}}</td>
+                                <td>{{p.disease}}</td>
+                                <td>{{p.testDate}}</td>
+                                <td>{{p.testDuration}}</td>
+                                <td>
+                                    <button class="btn btn-default">编辑</button>
+                                    <button class="btn btn-primary">预览</button>
+                                    <button class="btn btn-danger" v-on:click="deleteOne(index)">删除</button>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <!--下方分页及工具按钮-->
+                    <div id="toolBar">
+                        <button class="btn btn-danger" id="deleteAll" v-on:click="deleteAll()">批量删除</button>
+
+                            <el-pagination
+                                    layout="prev, pager, next"
+                                    :total="50">
+                            </el-pagination>
+
+                    </div>
+
+                    <div id="editWind" style="display: none">
+                        <div id="editWind-title">编辑资料</div>
+                        <div id="editWind-body">
+                            <form action="">
+                                <div>
+                                    <label for="name">患者姓名</label>
+                                    <input type="text" id="name" value="">
+                                </div>
+
+                                <div>
+                                    <label>性别</label>
+                                    <input type="radio" id="male" value="男"  v-model="gender">
+                                    <label for="male" >男</label>
+
+                                    <input type="radio" id="female" value="女" v-model="gender">
+                                    <label for="female">女</label>
+                                </div>
+                                <div>
+                                    <label for="disease">患者病种</label>
+                                    <select name="disease" id="disease">
+                                        <option value="ACL术前">ACL术前</option>
+                                        <option value="ACL术前">ACL术后</option>
+                                        <option value="关节炎">关节炎</option>
+                                        <option value="ACL术前">多发韧带损伤</option>
+                                        <option value="ACL术前">臀肌挛缩</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label >选择测试日期</label>
+                                    <el-date-picker
+                                            v-model="testDate"
+                                            type="date"
+                                            placeholder="选择日期"
+                                           >
+                                    </el-date-picker>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <!--数据上传-->
+                <div id="dataUpload" v-if="show_upload">
+                    <div id="dataUpload-title"><h2>病例数据上传</h2></div>
+                    <div id="dataUpload-body">
+                        <el-upload
+                                ref="upload"
+                                multiple=true
+                                headers={Content-Type:multipart/form-data}
+                                action="/file/upload"
+                                :on-success="handleSuccess"
+                                :on-error="handleError"
+                                :on-progress="handleUploading"
+                                :on-preview="handlePreview"
+                                :on-remove="handleRemove"
+                                :file-list="fileList"
+                                :auto-upload="false">
+                            <el-button slot="trigger" size="small" type="primary">选取文件</el-button>
+                            <el-button style="margin-left: 10px;" size="small" type="success" @click="submitUpload">上传到服务器</el-button>
+                            <div slot="tip" class="el-upload__tip">支持rar格式，单个文件不能超过200MB</div>
+                        </el-upload>
+
+
+                    </div>
+                </div >
+                <!--数据分析-->
+                <div id="dataAnalysis" v-if="show_charts">
+                    <h3>建设中</h3>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+
+
+
+
+
+    </div>
+
+<footer class="container-fluid">
+    <div class="row bottomNav">
+        <div class="fastEntrance col-lg-4 col-md-4 col-sm-4 col-xs-6">
+            <ul>
+                <li class="bottomNav_title"><span>快速入口</span></li>
+                <li><a href="./mCenter.html">多中心</a></li>
+                <li><a href="./controlCenter.html">管理页面</a></li>
+            </ul>
+        </div>
+        <div class="serviceSupport col-lg-4 col-md-4 col-sm-4 col-xs-6">
+            <ul>
+                <li class="bottomNav_title"><span>云平台咨询</span></li>
+                <li><a href="">咨询内容1</a></li>
+                <li><a href="">咨询内容2</a></li>
+                <li><a href="">咨询内容3</a></li>
+            </ul>
+        </div>
+        <div class="contactUs col-lg-4 col-md-4 col-sm-4 col-xs-12">
+            <ul >
+                <li class="bottomNav_title">
+                    <span class="ctUSLink">联系我们</span>
+                </li>
+                <li>
+                    <a href="javascript:void 0">地址：上海市漕河泾开发区松江高科技园<br>莘砖公路518号11栋1004室</a>
+                </li>
+                <li class="li_2">电话：021-37027535 37027537<br/>传真：021-67690739<br/><a href="mailto:info@innomotion.biz">E-mail：info@innomotion.biz</a><br /><a
+                        href="ttp://www.innomotion.biz">http://www.innomotion.biz</a></li>
+            </ul>
+        </div>
+
+    </div>
+    <div class="row LogoAndCR">
+
+        <div class="copyright  col-lg-10">
+            <ul>
+                <li>上海逸动医学科技有限公司</li>
+                <li>Copyright &copy; 2012-2017 Shanghai Innomotion Medical Inc. All Rights Reserved</li>
+            </ul>
+        </div>
+        <div class="bottomLogo  col-lg-2 ">
+            <img src="../images/inno1.png" alt="">
+        </div>
+    </div>
+
+
+</footer>
+
+<script src="../plugins/jquery.min.js"></script>
+<!--<script src="https://unpkg.com/element-ui/lib/index.js"></script>-->
+
+
+<script src="../../dist/controlCenter.bundle.js"></script>
+<script src="../plugins/bootstrap-3.3.7-dist/js/bootstrap.js"></script>
+</body>
+</html>

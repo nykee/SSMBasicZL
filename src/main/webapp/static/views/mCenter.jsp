@@ -1,0 +1,221 @@
+<%--
+  Created by IntelliJ IDEA.
+  User: Administrator
+  Date: 2017/7/4
+  Time: 10:31
+  To change this template use File | Settings | File Templates.
+--%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>逸动云平台多中心</title>
+    <meta name=”renderer” content=”webkit|ie-comp|ie-stand” />
+    <meta http-equiv="X-UA-Compatible" content="IE=8">
+    <meta name="viewport" content="initial-scale=1.0, width=device-width, user-scalable=no" />
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/mCenter-largeScreen.css" media="screen and (min-width:980px) and (max-width:1440px)">
+    <link rel="stylesheet" href="../css/mCenter-smallScreen.css" media="screen and (min-width:320px) and (max-width:900px) ">
+
+    <!--BootStrapCSS文件引入-->
+    <link href="../plugins/bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet">
+    <!--<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=2bDYoECt97bksgX4w3j6FATWbs38FGHF"></script>-->
+    <!--<script src="http://libs.baidu.com/jquery/1.10.2/jquery.min.js"></script>-->
+
+    <style>
+        @media screen and (min-width: 320px) {
+            html {font-size: 14px;}
+        }
+
+        @media screen and (min-width: 360px) {
+            html {font-size: 16px;}
+        }
+
+        @media screen and (min-width: 400px) {
+            html {font-size: 18px;}
+        }
+
+        @media screen and (min-width: 440px) {
+            html {font-size: 20px;}
+        }
+
+        @media screen and (min-width: 480px) {
+            html {font-size: 22px;}
+        }
+
+        @media screen and (min-width: 640px) {
+            html {font-size: 28px;}
+
+        }
+    </style>
+</head>
+<body>
+<!--头部导航-->
+
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#"><img class="img-responsive center-block" src="../images/inno1.png" style="height: 50px" alt=""></a>
+        </div>
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li ><a href="../../index.jsp">首页 <span class="sr-only">(current)</span></a></li>
+                <li><a href="./mCenter.html" class="curPage">多中心展示</a></li>
+                <li><a href="./controlCenter.html">管理中心</a></li>
+            </ul>
+
+            <ul class="nav navbar-nav navbar-right" id="nav-right">
+                <li><a href="loginAndReg.html"><span class="glyphicon glyphicon-log-in"></span>登录</a></li>
+                <li><a href="./loginAndReg.html?action=reg"><span class="glyphicon glyphicon-user"></span>注册</a></li>
+
+            </ul>
+        </div>
+    </div>
+</nav>
+<!--页面主体-->
+<div class="container" id="main-container">
+    <div class="row">
+        <h1 id="title" class=" title col-lg-12 col-md-12 col-sm-12 col-xs-12" >逸动医疗多中心展示</h1>
+        <div class="defaultInfo col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <h3  class="mCenterDisc">逸动医疗致力于关节功能多中心的建立，在北京上海广州香港等地均建立了多中心</h3>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12" id="hosSel">
+            <i>请选择你需要查看数据的医院或机构：</i>
+            <select name="hSelect" id="hospitalSel">
+                <option value="301" selected="selected">解放军301总医院</option>
+                <option value="JST">积水潭医院</option>
+                <option value="GJTY">国家体育总局</option>
+                <option value="SHHS">华山医院</option>
+                <option value="D9RM">上海市第九人民医院</option>
+                <option value="D6RM">上海市第六人民医院</option>
+                <option value="SHTY">上海体育学院</option>
+                <option value="SHJT">上海交通大学</option>
+                <option value="GZJQ">广州军区总医院</option>
+                <option value="HNLG">华南理工大学</option>
+                <option value="XGZW">香港威尔士亲王医院</option>
+            </select>
+            <span id="gotoBtn" class="btn btn-primary">前往</span>
+            <b>或者点击下方的医院名称</b>
+        </div>
+    </div>
+    <div class="row">
+        <div id="chart-container" class="col-xs-12 col-sm-12 col-md-6 col-lg-6"  style="height:700px"></div>
+        <div id="mCenterInfo" class="col-xs-12 col-sm-12 col-md-6  col-lg-6">
+
+            <div class="beijingInfo " >
+                <b>逸动医疗北京中心</b>
+                <ul>
+                    <li>
+                        <a href="./mCenterDetail.html?hospital=301"><img src="../images/mCenter/301.png" alt="解放军301总医院"><s>解放军301总医院</s></a>
+                    </li>
+                    <li>
+                        <a href="./mCenterDetail.html?hospital=JST"><img src="../images/mCenter/jst.png" alt="积水潭医院"><s>积水潭医院</s></a>
+                    </li>
+                    <li>
+                        <a href="./mCenterDetail.html?hospital=GJTY"><img src="../images/mCenter/nstc.png" alt="国家体育运动总局"><s>国家体育运动总局</s></a>
+                    </li>
+                </ul>
+            </div>
+            <div class="shanghaiInfo">
+                <b>逸动医疗上海中心</b>
+                <ul>
+                    <li>
+                        <a href="./mCenterDetail.html?hospital=SHHS"><img src="../images/mCenter/hsyy.png" alt="华山医院"><s>华山医院</s></a>
+                    </li>
+                    <li>
+                        <a href="./mCenterDetail.html?hospital=D9RM"><img src="../images/mCenter/9rm.png" alt="上海市第九人民医院"><s>上海市第九人民医院</s></a>
+                    </li>
+                    <li>
+                        <a href="./mCenterDetail.html?hospital=D6RM"><img src="../images/mCenter/6rm.jpg" alt="上海市第六人民医院"><s>上海市第六人民医院</s></a>
+                    </li>
+                    <li>
+                        <a href="./mCenterDetail.html?hospital=SHTY"><img src="../images/mCenter/shty.jpg" alt="上海体育学院"><s>上海体育学院</s></a>
+                    </li>
+                    <li>
+                        <a href="./mCenterDetail.html?hospital=SHJT"><img src="../images/mCenter/shjt.jpg" alt="上海交通大学"><s>上海交通大学</s></a>
+                    </li>
+                </ul>
+            </div>
+            <div class="guangdongInfo">
+                <b>逸动医疗广东中心</b>
+                <ul>
+                    <li>
+                        <a href="./mCenterDetail.html?hospital=GZJQ"><img src="../images/mCenter/gzjy.png" alt=""><s>广州军区总医院</s></a>
+                    </li>
+                    <li>
+                        <a href="./mCenterDetail.html?hospital=HNLG"><img src="../images/mCenter/hnlg.jpg" alt=""><s>华南理工大学</s></a>
+                    </li>
+                    <li>
+                        <a href="./mCenterDetail.html?hospital=XGZW"><img src="../images/mCenter/wales.png" alt=""><s>香港威尔士亲王医院</s></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+</div>
+<!--页面尾部-->
+<footer class="container-fluid">
+    <div class="row bottomNav">
+        <div class="fastEntrance col-lg-4 col-md-4 col-sm-4 col-xs-6">
+            <ul>
+                <li class="bottomNav_title"><span>快速入口</span></li>
+                <li><a href="../views/mCenter.html">多中心</a></li>
+                <li><a href="../views/loginAndReg.html">管理页面</a></li>
+            </ul>
+        </div>
+        <div class="serviceSupport col-lg-4 col-md-4 col-sm-4 col-xs-6">
+            <ul>
+                <li class="bottomNav_title"><span>云平台咨询</span></li>
+                <li><a href="">咨询内容1</a></li>
+                <li><a href="">咨询内容2</a></li>
+                <li><a href="">咨询内容3</a></li>
+            </ul>
+        </div>
+        <div class="contactUs col-lg-4 col-md-4 col-sm-4 col-xs-12">
+            <ul >
+                <li class="bottomNav_title">
+                    <span class="ctUSLink">联系我们</span>
+                </li>
+                <li>
+                    <a href="/contact.html">地址：上海市漕河泾开发区松江高科技园<br>莘砖公路518号11栋1004室</a>
+                </li>
+                <li class="li_2">电话：021-37027535 37027537<br/>传真：021-67690739<br/><a href="mailto:info@innomotion.biz">E-mail：info@innomotion.biz</a><br /><a
+                        href="ttp://www.innomotion.biz">http://www.innomotion.biz</a></li>
+            </ul>
+        </div>
+
+    </div>
+    <div class="row LogoAndCR">
+
+        <div class="copyright  col-lg-10">
+            <ul>
+                <li>上海逸动医学科技有限公司</li>
+                <li>Copyright &copy; 2012-2017 Shanghai Innomotion Medical Inc. All Rights Reserved</li>
+            </ul>
+        </div>
+        <div class="bottomLogo  col-lg-2 ">
+            <img src="../images/inno1.png" alt="">
+        </div>
+    </div>
+</footer>
+
+<!--工具类js引入-->
+<script src="../plugins/jquery.min.js"></script>
+<script src="../plugins/bootstrap-3.3.7-dist/js/bootstrap.js"></script>
+<script type="text/JavaScript" src="../plugins/echarts-all.js"></script>
+<script type="text/javascript" src="../../dist/mCenter.bundle.js"></script>
+</body>
+</html>

@@ -1,0 +1,90 @@
+html{height:100%}
+body{height:100%}
+
+#main-container{
+    height: 800px;
+    width: auto;
+    margin: 0 auto;
+}
+#chart-container{
+    height:400px;
+    margin-top: 5%;
+    margin-left:5%;
+    float: left;
+
+}
+
+#mCenterInfo{
+    margin-top: 5%;
+    margin-left:3%;
+    float: left;
+    width: 100%;
+    /*height: 960px;*/
+    text-align: center;
+    /*border:1px solid #222;*/
+}
+#mCenterInfo h1{
+    margin: 5%;
+    color:#027ACE;
+}
+#mCenterInfo img{
+    width: 50px;
+    height: 50px;
+    float: left;
+}
+#mCenterInfo s{
+    text-decoration: none;
+    margin-left:10px;
+    font-family: '微软雅黑', serif;
+    font-size: 20px;
+    font-weight: bold;
+    float: left;
+    /*white-space: nowrap;*/
+    /*word-break:keep-all*/
+}
+#mCenterInfo b{
+    font-size: 1.5rem;
+    color:#027bbb;
+    margin:5%;
+    display: block;
+    text-align: center;
+}
+#mCenterInfo ul li{
+    /*border: 1px solid #1A89B4;*/
+    margin-top:5%;
+    /*width:31em*/
+    overflow: hidden;
+    vertical-align: middle;
+    height: 50px;
+    line-height: 50px;
+
+}
+.mCenterDisc{
+    margin: 5%;
+}
+.beijingInfo,.shanghaiInfo,.guangdongInfo{
+    /*display: none;*/
+    border-bottom:1px dotted #88C355;
+    margin-top: 2%;
+    list-style: none;
+
+}
+.beijingInfo ul ,.shanghaiInfo ul ,.guangdongInfo ul {
+    margin: 0 auto ;
+    display: inline-block;
+}
+
+.defaultInfo{border-top:1px dotted #88C355;}
+
+
+
+.height300{
+    height: 300px !important;
+}
+.active{
+    background: #F5F5F6;
+    border: 1px solid #88C355;
+}
+#hosSel {
+    text-align: center;
+}
